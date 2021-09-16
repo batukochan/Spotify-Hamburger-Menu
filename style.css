@@ -111,24 +111,53 @@ header nav ul li a:hover{
     display: none;
     cursor: pointer;
 }
-.hamburger div{
+.hamburger .line1, .hamburger .line2, .hamburger .line3{
     width: 30px;
     height: 3px;
     background-color: white;
     margin: 5px ;
+    transition: .3s ease;
 }
 
 @media screen and (max-width:1200px) {
+    body{
+        overflow-x: hidden;
+    }
     header{
         justify-content: space-between;
         padding: 0 10px;
     }
     header nav{
-        display: none;
+        position: absolute;
+        right: 0;
+        height: 90vh;
+        top: 10vh;
+        background-color: black;
+        width: 50%;
+        transform: translateX(100%);
+        transition: 0.5 ease-in-out;
+    }
+    header nav .navLinks{
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction: column;
+        align-content: space-around;
+    }
+    header nav .navLinks li{
+        opacity: 0;
     }
     body .hamburger{
         display:block;
     } 
+}
+
+.navOpen{
+    transform: translateX(0%);
+}
+
+.shadow{
+    background: rgba(0, 0, 0, 0.89);
 }
     
 @media screen and (max-width:1100px) {
@@ -153,8 +182,30 @@ header nav ul li a:hover{
     
 }
 
+.close .line1{
+    transform: rotate(-45deg) translate(-5px , 6px);
+
+}
+.close .line2{
+    opacity: 0;
+}
+.close .line3{
+    transform: rotate(45deg) translate(-5px , -6px);
+}
+
 @media screen and (max-width:750px) {
     .mainpage{
         height: 130vh;
+    }
+}
+
+@keyframes navFade{
+    from{
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px);
     }
 }
